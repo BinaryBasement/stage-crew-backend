@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  account-database:
+    image: postgres:14.4
+    container_name: account-database
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: account
+    ports:
+      - 5432:5432
+    networks:
+      - account-network
+    volumes:
+      - account-database:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      start_period: 20s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+
+volumes:
+  account-database:
+
+networks:
+  account-network:
+    driver: bridge
