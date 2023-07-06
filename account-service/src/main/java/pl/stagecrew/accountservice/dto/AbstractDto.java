@@ -1,4 +1,4 @@
-package pl.stagecrew.accountservice.model;
+package pl.stagecrew.accountservice.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,13 +8,11 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public abstract class AbstractModel {
+public abstract class AbstractDto {
 
     private UUID id;
 
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
-    private Long version;
 }

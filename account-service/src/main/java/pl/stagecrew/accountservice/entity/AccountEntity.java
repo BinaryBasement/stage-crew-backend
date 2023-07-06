@@ -1,9 +1,6 @@
 package pl.stagecrew.accountservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,20 +11,23 @@ import lombok.Setter;
 @Entity
 @Table(name = "accounts",
         indexes = {
-                @Index(name = "idx_username", columnList = "username", unique = true),
-                @Index(name = "idx_email", columnList = "email", unique = true)
+                @Index(name = "idx_username", columnList = AccountEntity_.USERNAME, unique = true),
+                @Index(name = "idx_email", columnList = AccountEntity_.EMAIL, unique = true)
         },
         uniqueConstraints = {
-                @UniqueConstraint(name = "uc_username", columnNames = "username"),
-                @UniqueConstraint(name = "uc_email", columnNames = "email")
+                @UniqueConstraint(name = "uc_username", columnNames = AccountEntity_.USERNAME),
+                @UniqueConstraint(name = "uc_email", columnNames = AccountEntity_.EMAIL)
         })
 public class AccountEntity extends AbstractEntity {
 
+    @Column(nullable = false, updatable = false)
     private String username;
 
+    @Column(nullable = false)
     private String email;
 
-    private String name;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "account_data_id", nullable = false)
+    private AccountDataEntity accountData;
 
-    private String surname;
 }

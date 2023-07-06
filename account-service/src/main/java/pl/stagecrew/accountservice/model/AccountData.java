@@ -7,11 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account extends AbstractModel {
+public class AccountData extends AbstractModel {
 
-    private String username;
+        private String name;
 
-    private String email;
-
-    private AccountData accountData;
+        private String surname;
 }

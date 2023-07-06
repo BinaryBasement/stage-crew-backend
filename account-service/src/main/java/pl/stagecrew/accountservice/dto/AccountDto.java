@@ -1,4 +1,4 @@
-package pl.stagecrew.accountservice.model;
+package pl.stagecrew.accountservice.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,11 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account extends AbstractModel {
+public class AccountDto extends AbstractDto {
 
     private String username;
 
     private String email;
 
-    private AccountData accountData;
+    private AccountDataDto accountData;
 }
