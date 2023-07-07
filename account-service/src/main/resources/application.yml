@@ -1,0 +1,33 @@
+# Server properties
+server:
+  port: 8082
+  servlet:
+    context-path: /api/v1
+  error:
+    include-stacktrace: never
+
+# Spring Boot properties
+spring:
+  application:
+    name: account-service
+  config:
+    import: optional:file:.env[.properties]
+  mvc:
+    log-resolved-exception: true
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/account'
+    username: 'postgres'
+    password: 'postgres'
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  sql:
+   init:
+     mode: never
