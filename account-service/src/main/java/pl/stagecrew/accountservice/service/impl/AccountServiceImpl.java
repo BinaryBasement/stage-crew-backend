@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.stagecrew.accountservice.exception.AccountNotFoundException;
 import pl.stagecrew.accountservice.mapper.AccountMapper;
+import pl.stagecrew.accountservice.messaging.CreateAccountPublisher;
 import pl.stagecrew.accountservice.model.Account;
 import pl.stagecrew.accountservice.repository.AccountRepository;
 import pl.stagecrew.accountservice.service.AccountService;
@@ -19,12 +20,14 @@ public class AccountServiceImpl extends AbstaractService implements AccountServi
 
     private final AccountMapper accountMapper;
     private final AccountRepository accountRepository;
+    private final CreateAccountPublisher createAccountPublisher;
 
     @Override
-    public Account createAccount(Account account) {
-        return accountMapper.mapToAccount(accountRepository.save(
-                accountMapper.mapToAccountEntity(account)
-        ));
+    public Account createAccount(Account account, String password) {
+        Account createdAccount = accountMapper.mapToAccount(accountRepository
+                .save(accountMapper.mapToAccountEntity(account)));
+        createAccountPublisher.sendCreateAccountMessage(createdAccount, password);
+        return createdAccount;
     }
 
     @Override
