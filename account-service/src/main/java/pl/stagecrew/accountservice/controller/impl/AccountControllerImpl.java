@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-public class AccountControllerImpl extends AbstractController implements AccountController {
+public class AccountControllerImpl implements AccountController {
 
     private final AccountMapper accountMapper;
     private final AccountService accountService;
