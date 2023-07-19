@@ -17,14 +17,15 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-public class AccountControllerImpl extends AbstractController implements AccountController {
+public class AccountControllerImpl implements AccountController {
 
     private final AccountMapper accountMapper;
     private final AccountService accountService;
 
     @Override
     public ResponseEntity<AccountDto> createAccount(CreateAccountDto accountDto) {
-        AccountDto account = accountMapper.mapToAccountDto(accountService.createAccount(accountMapper.mapToAccount(accountDto)));
+        AccountDto account = accountMapper.mapToAccountDto(accountService
+                .createAccount(accountMapper.mapToAccount(accountDto), accountDto.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(account);
     }
 

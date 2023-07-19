@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface AccountService {
 
-    Account createAccount(Account account);
+    Account createAccount(Account account, String password);
 
     Account getAccountById(UUID id) throws AccountNotFoundException;
 
