@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Transactional(Transactional.TxType.MANDATORY)
 public interface AccountRepository extends JpaRepository<AccountEntity, UUID> {
+
+    void deleteByUsername(String username);
 }

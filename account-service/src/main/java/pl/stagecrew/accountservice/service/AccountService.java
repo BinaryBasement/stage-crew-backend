@@ -8,9 +8,11 @@ import java.util.UUID;
 
 public interface AccountService {
 
-    Account createAccount(Account account, String password);
+    Account createAccount(Account account);
 
     Account getAccountById(UUID id) throws AccountNotFoundException;
 
     List<Account> getAllAccounts();
+
+    void rollbackAccount(String username);
 }

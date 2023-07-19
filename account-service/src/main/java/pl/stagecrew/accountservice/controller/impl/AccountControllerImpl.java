@@ -25,7 +25,7 @@ public class AccountControllerImpl implements AccountController {
     @Override
     public ResponseEntity<AccountDto> createAccount(CreateAccountDto accountDto) {
         AccountDto account = accountMapper.mapToAccountDto(accountService
-                .createAccount(accountMapper.mapToAccount(accountDto), accountDto.getPassword()));
+                .createAccount(accountMapper.mapToAccount(accountDto)));
         return ResponseEntity.status(HttpStatus.CREATED).body(account);
     }
 

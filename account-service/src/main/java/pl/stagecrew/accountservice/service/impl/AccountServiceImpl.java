@@ -2,6 +2,7 @@ package pl.stagecrew.accountservice.service.impl;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.stagecrew.accountservice.exception.AccountNotFoundException;
 import pl.stagecrew.accountservice.mapper.AccountMapper;
@@ -20,13 +21,15 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountMapper accountMapper;
     private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
     private final AccountPublisher accountPublisher;
 
     @Override
-    public Account createAccount(Account account, String password) {
+    public Account createAccount(Account account) {
         Account createdAccount = accountMapper.mapToAccount(accountRepository
                 .save(accountMapper.mapToAccountEntity(account)));
-        accountPublisher.sendCreateAccountEvent(createdAccount, password);
+        createdAccount.setPassword(passwordEncoder.encode(account.getPassword()));
+        accountPublisher.publishCreateAccountEvent(createdAccount);
         return createdAccount;
     }
 
@@ -39,5 +42,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> getAllAccounts() {
         return accountMapper.mapToAccountList(accountRepository.findAll());
+    }
+
+    @Override
+    public void rollbackAccount(String username) {
+        accountRepository.deleteByUsername(username);
     }
 }

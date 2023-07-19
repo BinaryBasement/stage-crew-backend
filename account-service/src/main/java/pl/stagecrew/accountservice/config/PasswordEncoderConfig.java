@@ -1,4 +1,4 @@
-package pl.stagecrew.authservice.config;
+package pl.stagecrew.accountservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

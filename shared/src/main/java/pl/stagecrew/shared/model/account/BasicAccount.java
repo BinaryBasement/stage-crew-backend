@@ -1,18 +1,19 @@
-package pl.stagecrew.shared.event.account;
+package pl.stagecrew.shared.model.account;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.stagecrew.shared.event.AbstractEvent;
+import pl.stagecrew.shared.model.AbstractModel;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreateAccountEvent extends AbstractEvent {
+public class BasicAccount extends AbstractModel {
 
     private String username;
 
     private String password;
 
     private String email;
+
 }

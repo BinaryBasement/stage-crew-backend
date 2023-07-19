@@ -1,10 +1,10 @@
-package pl.stagecrew.accountservice.messaging.impl;
+package pl.stagecrew.authservice.messaging.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import pl.stagecrew.accountservice.messaging.AccountPublisher;
-import pl.stagecrew.accountservice.model.Account;
+import pl.stagecrew.authservice.messaging.AccountPublisher;
+import pl.stagecrew.authservice.model.Account;
 import pl.stagecrew.shared.event.account.AccountEvent;
 import pl.stagecrew.shared.event.account.AccountEventStatus;
 
@@ -17,8 +17,8 @@ public class AccountPublisherImpl implements AccountPublisher {
     private final KafkaTemplate<UUID, AccountEvent> kafkaTemplate;
 
     @Override
-    public void publishCreateAccountEvent(Account account) {
-        AccountEvent accountEvent = buildAccountEvent(account, AccountEventStatus.CREATE);
+    public void publishRollbackAccountEvent(Account account) {
+        AccountEvent accountEvent = buildAccountEvent(account, AccountEventStatus.ROLLBACK);
         kafkaTemplate.send("create-account", accountEvent.getEventId(), accountEvent);
     }
 
