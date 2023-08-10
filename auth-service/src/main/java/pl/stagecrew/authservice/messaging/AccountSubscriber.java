@@ -6,5 +6,5 @@ import pl.stagecrew.shared.event.account.AccountEvent;
 public interface AccountSubscriber {
 
     @KafkaListener(topics = "create-account", groupId = "auth-service")
-    void onAccountEvent(AccountEvent event);
+    void onCreateAccountEvent(AccountEvent event);
 }

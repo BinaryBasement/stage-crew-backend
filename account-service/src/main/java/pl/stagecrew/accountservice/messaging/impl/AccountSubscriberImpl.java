@@ -16,15 +16,13 @@ public class AccountSubscriberImpl implements AccountSubscriber {
     private final AccountService accountService;
 
     @Override
-    public void onAccountEvent(AccountEvent event) {
+    public void onCreateAccountEvent(AccountEvent event) {
         if (Objects.requireNonNull(event.getStatus()) == AccountEventStatus.ROLLBACK) {
-            handleRollbackAccountEvent(event);
-        } else {
-            throw new IllegalArgumentException("Unknown event status: " + event.getStatus());
+            handleRollbackCreateAccountEvent(event);
         }
     }
 
-    private void handleRollbackAccountEvent(AccountEvent event) {
-        accountService.rollbackAccount(event.getAccount().getUsername());
+    private void handleRollbackCreateAccountEvent(AccountEvent event) {
+        accountService.deleteAccount(event.getAccount().getUsername());
     }
 }

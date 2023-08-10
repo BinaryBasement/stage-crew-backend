@@ -6,5 +6,5 @@ public interface AccountService {
 
     void createAccount(Account account);
 
-    void rollbackAccount(String username);
+    void deleteAccount(String username);
 }

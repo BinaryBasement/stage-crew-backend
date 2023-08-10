@@ -1,9 +1,9 @@
 package pl.stagecrew.accountservice.service.impl;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.stagecrew.accountservice.exception.AccountNotFoundException;
 import pl.stagecrew.accountservice.mapper.AccountMapper;
 import pl.stagecrew.accountservice.messaging.AccountPublisher;
@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@Transactional(rollbackOn = Exception.class)
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
@@ -45,7 +44,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void rollbackAccount(String username) {
+    @Transactional
+    public void deleteAccount(String username) {
         accountRepository.deleteByUsername(username);
     }
 }
