@@ -7,14 +7,10 @@ Sauth-service/src/main/java/pl/stagecrew/authservice/messaging/AccountPublisher.
 Tauth-service/src/main/java/pl/stagecrew/authservice/messaging/AccountSubscriber.java,3\a\3a2756c78c18949b4175235f98b814f4115bb4db
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
-î
-daccount-service/src/main/java/pl/stagecrew/accountservice/controller/impl/AccountControllerImpl.java,c\0\c0fd6629a176f127217448db4262576d4ce63de0
 ë
 aaccount-service/src/main/java/pl/stagecrew/accountservice/exception/AccountNotFoundException.java,1\3\13810b59665ed6bfe368551ce3026f09d48dbf1e
 à
 Xaccount-service/src/main/java/pl/stagecrew/accountservice/AccountServiceApplication.java,1\6\169d410a2614f464c299c2d56f4b54b5b57709de
-Ñ
-Taccount-service/src/main/java/pl/stagecrew/accountservice/config/SecurityConfig.java,a\d\ad90c362be08a5fb7302e7b85382654c0b038fa4
 é
 ^account-service/src/main/java/pl/stagecrew/accountservice/service/impl/AccountServiceImpl.java,4\6\468917882128b2ae3202d06f369312593330805a
 Å
@@ -27,7 +23,5 @@ Kauth-service/src/main/java/pl/stagecrew/authservice/config/KafkaConfig.java,6\
 Pshared/src/main/java/pl/stagecrew/shared/util/SecurityAuthenticationManager.java,a\4\a4f834c2ef2de3dfbe434d6ad90c85a6d9b4b7ee
 á
 Waccount-service/src/main/java/pl/stagecrew/accountservice/config/JpaAuditingConfig.java,d\5\d55b3791ee332d07545f3da696c5015bf7eac94e
-}
-Mshared/src/main/java/pl/stagecrew/shared/util/SpringSecurityAuditorAware.java,5\7\577379c052c128831b78a2e36f09e4fb20e2ea82
 C
 shared/build.gradle,3\a\3a551cc065aa0481b49944f0700a7244f8f9c574
