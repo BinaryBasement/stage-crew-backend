@@ -12,7 +12,7 @@ public abstract class AbstractDto {
 
     private UUID id;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdDate;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime lastModifiedDate;
 }

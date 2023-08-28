@@ -12,9 +12,9 @@ public abstract class AbstractModel {
 
     private UUID id;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdDate;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime lastModifiedDate;
 
     private Long version;
 }
