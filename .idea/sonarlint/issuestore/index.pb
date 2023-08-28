@@ -14,14 +14,8 @@ Xaccount-service/src/main/java/pl/stagecrew/accountservice/AccountServiceApplica
 é
 ^account-service/src/main/java/pl/stagecrew/accountservice/service/impl/AccountServiceImpl.java,4\6\468917882128b2ae3202d06f369312593330805a
 Å
-Qauth-service/src/main/java/pl/stagecrew/authservice/config/JpaAuditingConfig.java,e\0\e048caeb55ce30e61bd7862e490b97cf57c790bf
-Å
 Qaccount-service/src/main/java/pl/stagecrew/accountservice/config/KafkaConfig.java,3\a\3a969a5c3ad91f656cd01d946f025c3fa904c33b
 {
 Kauth-service/src/main/java/pl/stagecrew/authservice/config/KafkaConfig.java,6\0\60004b51dd3432f8ea11b28c6afa389fe2d262a7
-Ä
-Pshared/src/main/java/pl/stagecrew/shared/util/SecurityAuthenticationManager.java,a\4\a4f834c2ef2de3dfbe434d6ad90c85a6d9b4b7ee
-á
-Waccount-service/src/main/java/pl/stagecrew/accountservice/config/JpaAuditingConfig.java,d\5\d55b3791ee332d07545f3da696c5015bf7eac94e
 C
 shared/build.gradle,3\a\3a551cc065aa0481b49944f0700a7244f8f9c574
