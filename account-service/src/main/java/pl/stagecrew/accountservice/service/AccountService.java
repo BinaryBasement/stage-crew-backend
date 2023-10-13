@@ -14,5 +14,5 @@ public interface AccountService {
 
     List<Account> getAllAccounts();
 
-    void rollbackAccount(String username);
+    void deleteAccount(String username);
 }

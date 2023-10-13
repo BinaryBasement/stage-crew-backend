@@ -7,6 +7,7 @@ import pl.stagecrew.authservice.messaging.AccountSubscriber;
 import pl.stagecrew.authservice.model.Account;
 import pl.stagecrew.authservice.service.AccountService;
 import pl.stagecrew.shared.event.account.AccountEvent;
+import pl.stagecrew.shared.event.account.AccountEventStatus;
 
 @Component
 @RequiredArgsConstructor
@@ -16,11 +17,11 @@ public class AccountSubscriberImpl implements AccountSubscriber {
     private final AccountPublisher accountPublisher;
 
     @Override
-    public void onAccountEvent(AccountEvent event) {
-        switch (event.getStatus()) {
-            case CREATE -> handleCreateAccountEvent(event);
-            case ROLLBACK -> handleRollbackAccountEvent(event);
-            default -> throw new IllegalArgumentException("Unknown event status: " + event.getStatus());
+    public void onCreateAccountEvent(AccountEvent event) {
+        if (event.getStatus() == AccountEventStatus.CREATE) {
+            handleCreateAccountEvent(event);
+        } else if (event.getStatus() == AccountEventStatus.ROLLBACK) {
+            handleRollbackCreateAccountEvent(event);
         }
     }
 
@@ -30,12 +31,11 @@ public class AccountSubscriberImpl implements AccountSubscriber {
             accountService.createAccount(account);
         } catch (Exception e) {
             accountPublisher.publishRollbackAccountEvent(account);
-            throw e;
         }
     }
 
-    private void handleRollbackAccountEvent(AccountEvent event) {
-        accountService.rollbackAccount(event.getAccount().getUsername());
+    private void handleRollbackCreateAccountEvent(AccountEvent event) {
+        accountService.deleteAccount(event.getAccount().getUsername());
     }
 
     private Account buildAccount(AccountEvent event) {

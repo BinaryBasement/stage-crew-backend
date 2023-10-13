@@ -1,15 +1,15 @@
 package pl.stagecrew.authservice.service.impl;
 
-import jakarta.transaction.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.stagecrew.authservice.mapper.AccountMapper;
 import pl.stagecrew.authservice.model.Account;
 import pl.stagecrew.authservice.repository.AccountRepository;
 import pl.stagecrew.authservice.service.AccountService;
 
 @Service
-@Transactional(rollbackOn = Exception.class)
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
@@ -22,7 +22,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void rollbackAccount(String username) {
+    @Transactional
+    public void deleteAccount(String username) {
         accountRepository.deleteByUsername(username);
     }
 }

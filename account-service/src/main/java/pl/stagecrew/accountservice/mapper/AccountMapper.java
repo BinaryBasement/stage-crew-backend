@@ -1,6 +1,7 @@
 package pl.stagecrew.accountservice.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import pl.stagecrew.accountservice.dto.AccountDto;
 import pl.stagecrew.accountservice.dto.CreateAccountDto;
@@ -19,6 +20,8 @@ public interface AccountMapper {
     Account mapToAccount(AccountEntity accountEntity);
 
     AccountEntity mapToAccountEntity(Account account);
+
+    AccountEntity mapToAccountEntity(@MappingTarget AccountEntity accountEntity, Account account);
 
     List<Account> mapToAccountList(List<AccountEntity> accountEntityList);
 
